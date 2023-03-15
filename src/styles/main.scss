@@ -1,0 +1,300 @@
+@use 'variables' as v;
+
+body, input, button {
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 0;
+  margin: 0;
+  background-color: v.$secondaryDark;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  min-width: 44px;
+  min-height: 44px;
+  color: v.$secondaryLight;
+  text-decoration: none;
+}
+
+h1, p {
+  padding: 0;
+  margin: 0;
+  color: v.$secondaryLight;
+}
+
+img {
+  display: block;
+}
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  padding: 8px;
+  color: v.$secondaryLight;
+  z-index: 100;
+  height: 44px;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 10px;
+  left: 10px;
+  border: none;
+  color: v.$secondaryDark;
+  background-color: v.$secondaryLight;
+}
+
+.app-bar {
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: v.$secondaryDark;
+  z-index: 1;
+
+  .app-title {
+    color: v.$secondaryLight;
+    font-size: 36px;
+    text-decoration: none;
+  }
+  
+  #hamburger-button {
+    display: none;
+    font-size: 32px;
+    height: 44px;
+    width: 44px;
+    text-decoration: none;
+    color: v.$secondaryLight;
+    text-align: center;
+    border: none;
+    @media screen and (v.$mobileScreen) {
+      display: block;
+    }
+  }
+
+  .navigation-store {
+    nav {
+      flex: 1;
+    }
+    align-self: center;
+    @media screen and (v.$mobileScreen) {
+      display: none;
+    }
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+#navigation-mobile {
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: v.$secondaryDark;
+  padding-top: 70px;
+  transform: translate(0, -250px);
+  transition: transform 0.3s ease-in-out;
+
+  nav {
+    flex-direction: column;
+  }
+}
+
+#navigation-mobile.open {
+  transform: translate(0,0)
+}
+
+.hero-image {
+  margin: 0;
+  padding-top: 75px;
+  img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    @media screen and (min-width: 1200px) {
+      min-width: 1000px;
+    }
+  }
+}
+
+main {
+  .content {
+    padding: 32px;
+
+    h3 {
+      font-size: 24px;
+      text-align: center;
+      color: v.$secondaryLight;
+    }
+
+    .restaurants {
+      left: 0;
+      right: 0;
+      margin: auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+      gap: 16px;
+      :hover {
+        cursor: pointer;
+      }
+      @media screen and (v.$tabletScreen) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media screen and (v.$mobileScreen) {
+        grid-template-columns: repeat(1, 1fr);
+      }
+
+      .restaurant-item {
+        display: block;
+        border: none;
+        border-radius: 8px;
+        background-color: v.$secondaryLight;
+
+        span {
+          font-size: 16px;
+          color: v.$primaryDark;
+        }
+
+        img {
+          object-fit: cover;
+          height: 200px;
+          width: 100%;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+
+        .title {
+          text-align: center;
+          padding: 6px;
+          color: v.$secondaryDark;
+          font-size: 24px;
+        }
+
+        p {
+          color: v.$secondaryDark;
+          padding: 6px;
+        }
+      }
+    }
+  }
+}
+
+footer {
+  position:relative;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  background-color: v.$secondaryLight ;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  p {
+    margin: 0;
+    color: v.$secondaryDark;
+  }
+}
+
+
+.restaurant-detail {
+  padding: 40px;
+  color: v.$secondaryLight;
+
+  h1 {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .restaurant-info {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    @media screen and (v.$tabletScreen) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .restaurant-image {
+    border: 2px solid v.$secondaryLight;
+  }
+
+  .menu-container {
+    display: flex;
+    gap: 20px;
+    @media screen and (v.$mobileScreen) {
+      flex-direction: column;
+    }
+  }
+
+  .reviews-container {
+    display: flex;
+    gap: 10px;
+    overflow: scroll;
+    @media screen and (v.$mobileScreen) {
+      flex-direction: column;
+    }
+
+    .review-item {
+      border: none;
+      border-radius: 8px;
+      background-color: v.$secondaryLight;
+      color: v.$secondaryDark;
+      padding: 8px;
+      min-width: 340px;
+      height: 90px;
+      overflow: scroll;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      @media screen and (v.$mobileScreen) {
+        min-width: unset;
+      }
+
+      .review-header {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .review-body {
+        margin-top: 10px;
+        max-height: 100px;
+        overflow: scroll;
+      }
+
+      p {
+        color: v.$secondaryDark;
+      }
+    }
+  }
+}
+
+.like {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: red;
+  
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  border-radius: 50%;
+  border: 0;
+  
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  z-index: 1;
+}

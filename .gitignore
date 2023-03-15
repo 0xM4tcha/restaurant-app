@@ -1,0 +1,10 @@
+# ignore log files
+*.log
+
+yarn.lock
+package-lock.json
+
+# ignore directories
+node_modules/
+dist/
+dist/
